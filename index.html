@@ -20,7 +20,7 @@ body {
 
 }
 .game-wrapper.show::before {
-  content: "";o
+  content: "";
   position: fixed;
   inset: 0;
   background:
@@ -763,7 +763,7 @@ function checkSymbolClick(div){
 
 function startIQNumberPuzzle(){
   // 1️⃣ Number Puzzle fade OUT
-  iqNumberWrapper.classList.remove("show");
+  iqSymbolWrapper.classList.remove("show");
 
   // 2️⃣ Warten bis Fade-Out sichtbar ist
   setTimeout(() => {
@@ -784,16 +784,16 @@ iqNumberSolutionBtn.onclick = () => {
 
   iqNumberSolutionOverlay.classList.add("show");
 
-  setTimeout(() => iqNumberolutionOverlay.classList.remove("show"), 5000);
+  setTimeout(() => iqNumberSolutionOverlay.classList.remove("show"), 5000);
 };
 
 // Klick irgendwo schließt Overlay
 iqNumberSolutionOverlay.onclick = () => iqNumberSolutionOverlay.classList.remove("show");
 /* 🔢 ZAHLEN-ALPHABET */
-const alphabet = "0123456789";
+const numberalphabet = "0123456789";
 
 /* 🧠 ZAHLEN-SEQUENZEN */
-const words = [
+const numberwords = [
   "0123",
   "9876",
   "1357",
@@ -820,14 +820,14 @@ let currentIndex = 0;
 let globalOrder = 0;
 
 /* GRID ERZEUGEN */
-function generateGrid() {
+function generateNumberGrid() {
   grid.innerHTML = "";
   message.textContent = "";
   currentIndex = 0;
   positions = [];
   globalOrder = 0;
 
-  const WORDS_PER_GRID = 6;
+  const NUBER_PER_GRID = 6;
   const selected = [];
 
   while (selected.length < WORDS_PER_GRID) {
