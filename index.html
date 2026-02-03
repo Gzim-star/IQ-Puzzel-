@@ -823,17 +823,19 @@ let numberOrder = 0;
 function generateNumberGrid() {
   iqNumberGrid.innerHTML = "";
   numberMessage.textContent = "";
-  currentIndex = 0;
-  positions = [];
-  globalOrder = 0;
+  numberIndex = 0;
+  numberPositions = [];
+  numberOrder = 0;
 
   const NUMBERS_PER_GRID = 6;
+  currentIQNumberWords = [];
   const selected = [];
 
   while (selected.length < NUMBERS_PER_GRID) {
-    const w = numberwords[Math.floor(Math.random() * words.length)];
+    const w = numberwords[Math.floor(Math.random() * numberwords.length)];
     if (!selected.includes(w)) selected.push(w);
   }
+  currentIQNumberWords = selected;
 
   const gridData = Array.from({ length: 12 }, () =>
     Array.from({ length: 12 }, () => null)
@@ -848,19 +850,20 @@ function generateNumberGrid() {
 
       if (gridData[r][c]) {
         div.textContent = gridData[r][c].letter;
-        positions.push({ div, order: gridData[r][c].order });
+        numberPositions.push({ div, order: gridData[r][c].order });
       } else {
         div.textContent =
           numberalphabet[Math.floor(Math.random() * numberalphabet.length)];
       }
 
       div.onclick = () => checkNumberClick(div);
-      grid.appendChild(div);
+      iqNumberGrid.appendChild(div);
     }
   }
 
-  positions.sort((a, b) => a.order - b.order);
+  numberPositions.sort((a, b) => a.order - b.order);
 }
+
 
 /* ZAHLEN-SEQUENZ PLATZIEREN */
 function placeNumberWord(word, gridData) {
