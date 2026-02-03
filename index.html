@@ -815,23 +815,23 @@ const numberwords = [
   "1618"
 ];
 
-let positions = [];
-let currentIndex = 0;
-let globalOrder = 0;
+let numberPositions = [];
+let numberIndex = 0;
+let numberOrder = 0;
 
 /* GRID ERZEUGEN */
 function generateNumberGrid() {
-  grid.innerHTML = "";
-  message.textContent = "";
+  iqNumberGrid.innerHTML = "";
+  numberMessage.textContent = "";
   currentIndex = 0;
   positions = [];
   globalOrder = 0;
 
-  const NUBER_PER_GRID = 6;
+  const NUMBERS_PER_GRID = 6;
   const selected = [];
 
-  while (selected.length < WORDS_PER_GRID) {
-    const w = words[Math.floor(Math.random() * words.length)];
+  while (selected.length < NUMBERS_PER_GRID) {
+    const w = numberwords[Math.floor(Math.random() * words.length)];
     if (!selected.includes(w)) selected.push(w);
   }
 
@@ -839,7 +839,7 @@ function generateNumberGrid() {
     Array.from({ length: 12 }, () => null)
   );
 
-  selected.forEach(word => placeWord(word, gridData));
+  selected.forEach(word => placeNumberWord(word, gridData));
 
   for (let r = 0; r < 12; r++) {
     for (let c = 0; c < 12; c++) {
@@ -851,10 +851,10 @@ function generateNumberGrid() {
         positions.push({ div, order: gridData[r][c].order });
       } else {
         div.textContent =
-          alphabet[Math.floor(Math.random() * alphabet.length)];
+          numberalphabet[Math.floor(Math.random() * numberalphabet.length)];
       }
 
-      div.onclick = () => checkClick(div);
+      div.onclick = () => checkNumberClick(div);
       grid.appendChild(div);
     }
   }
@@ -863,7 +863,7 @@ function generateNumberGrid() {
 }
 
 /* ZAHLEN-SEQUENZ PLATZIEREN */
-function placeWord(word, gridData) {
+function placeNumberWord(word, gridData) {
   const len = word.length;
   let placed = false;
 
@@ -898,7 +898,7 @@ function placeWord(word, gridData) {
 
       gridData[r][c] = {
         letter: word[i],
-        order: globalOrder++
+        order: numberOrder++
       };
     }
 
