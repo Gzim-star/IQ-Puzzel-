@@ -815,9 +815,7 @@ const numberwords = [
   "1618"
 ];
 
-let numberPositions = [];
-let numberIndex = 0;
-let numberOrder = 0;
+
 
 /* GRID ERZEUGEN */
 function generateNumberGrid() {
@@ -924,20 +922,17 @@ function checkNumberClick(div){
     setTimeout(()=>div.classList.remove("wrong"),700);
   }
 }
-function startIQColorPuzzle(){
-  // 1️⃣ Symbol Puzzle fade OUT
-  iqSymbolWrapper.classList.remove("show");
 
-  // 2️⃣ Warten bis Fade-Out sichtbar ist
+  function startIQColorPuzzle(){
+  // ✅ richtig: Number Puzzle ausblenden
+  iqNumberWrapper.classList.remove("show");
+
   setTimeout(() => {
-
-    // 3️⃣ Mini-Frame erzwingen (wichtig!)
     requestAnimationFrame(() => {
-      iqColorWrapper.classList.add("show"); // fade IN
+      iqColorWrapper.classList.add("show");
       generateColorGrid();
     });
-
-  }, 1500); // exakt deine CSS-Dauer
+  }, 1500);
 }
 
 iqColorSolutionBtn.onclick = () => {
